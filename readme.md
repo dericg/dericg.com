@@ -13,4 +13,22 @@ Now we need to be able to enter a new user, ultimately to a specific group. The 
 -- send welcome email to stakeholder with link to questionnaire
 -- We'll adding them as a user in wordpress after the first is accomplished
 
--- Currently, privately, a subscriber can be onboarded, added to a list, then receive welcome email from list.  How about a drip campaign now? Set the purpose
+-- Currently, privately, a subscriber can be onboarded, added to a list, then receive welcome email from list.  How about a drip campaign now? Set the purpose:
+
+The purpose is to have a better way to communicate with my audience, and keep them up to date.
+
+Welcome email: What's this all about
+Subject: Hey, Chad! It's Deric. Got a minute?
+
+(Note, preheader is 85-100 characters)
+
+
+Preheader: I've decided I need to make a better effort at keeping up with my friends.
+
+Body text: Hey, Chad! Hope all is well!
+
+A while ago I started facing an issue logging into Facebook due to an issue surrounding two-factor authentication when logging in. I'm no longer able to access my account. To be honest, part of it was a relief. However, over time, I can say I miss perusing the Facbooke Marketplace and I have noticed it has also caused me to lose "touch" with people I called friends. 
+
+I am on other social networks, but personally I've felt what I was sharing was not all too valuable when it came to fostering real connections. I feel like here's something to be said for someone sitting down and writing someone else a letter. That's gotta be better than social media posts, right? Well, I'll guess we'll find out.
+
+I would love if you could help me keep my contacts correct and up to date. All you need to do is click below and verify I've got a good contact for you. It'll just take a few seconds, and if you have another email you'd rather me contact you at, you can update your address there, too. Thanks!
