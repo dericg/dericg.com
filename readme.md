@@ -32,3 +32,17 @@ A while ago I started facing an issue logging into Facebook due to an issue surr
 I am on other social networks, but personally I've felt what I was sharing was not all too valuable when it came to fostering real connections. I feel like here's something to be said for someone sitting down and writing someone else a letter. That's gotta be better than social media posts, right? Well, I'll guess we'll find out.
 
 I would love if you could help me keep my contacts correct and up to date. All you need to do is click below and verify I've got a good contact for you. It'll just take a few seconds, and if you have another email you'd rather me contact you at, you can update your address there, too. Thanks!
+
+Gravity form enters onboards into list
+List autosponder sends "welcome" email. Asks user to verify their email. Is this what needs to happen?
+User lands on gravity form with fields prefilled. They can edit then submit, or submit if no changes are needed. This should add the user to a new list and an additioncal "welcome" email should be sent as an autoresponder.
+
+The first list is global contact list, the second is specific enrollment in updates
+
+We enter the data into the newsletter page/form
+We reveive the correct email, however the link is incorrect
+As identified above, user needs to land on gravity form with fields prefilled. This has not been done.
+They can edit then submit, or submit if no changes are needed. This should add the user to a new list and an additioncal "welcome" email should be sent as an autoresponder.
+
+Newsletter forms top of funnel, 
+but gravity forms has to be used after to pass parameters. If Mailster can do this, then we can use Mailster to handle all of the operation
