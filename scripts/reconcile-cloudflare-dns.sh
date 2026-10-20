@@ -12,12 +12,16 @@ upsert_cname() {
   local hostname="$1"
   local response record_id payload
 
-  response="$(curl --fail-with-body -sS "${auth[@]}" -G \
+  response="$(curl -sS "${auth[@]}" -G \
     --data-urlencode "name=${hostname}" \
-    --data-urlencode "type=CNAME" \
     "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records")"
 
-  record_id="$(jq -r '.result[0].id // empty' <<<"${response}")"
+  if ! jq -e '.success == true' <<<"${response}" >/dev/null; then
+    echo "Cloudflare DNS lookup failed: ${response}" >&2
+    exit 1
+  fi
+
+  record_id="$(jq -r '.result[] | select(.type == "CNAME") | .id' <<<"${response}" | head -n1)"
   payload="$(jq -nc --arg name "${hostname}" --arg content "${CLOUDFLARE_PAGES_PROJECT}.pages.dev" \
     '{type:"CNAME", name:$name, content:$content, ttl:1, proxied:false}')"
 
