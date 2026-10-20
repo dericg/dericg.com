@@ -25,6 +25,7 @@ concurrency:
 
 env:
   CLOUDFLARE_PAGES_PROJECT: dericg-com
+  CLOUDFLARE_ZONE_ID: 945593a586fea64d058f1bf917e8f6d6
 
 jobs:
   validate:
@@ -85,6 +86,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Build clean dist artifact
         run: bash scripts/build-site.sh
+      - name: Reconcile Cloudflare DNS
+        run: bash scripts/reconcile-cloudflare-dns.sh
+
       - name: Deploy production to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
