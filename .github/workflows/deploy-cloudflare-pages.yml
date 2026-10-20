@@ -34,9 +34,9 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
       - name: Build clean dist artifact
-        run: ./scripts/build-site.sh
+        run: bash scripts/build-site.sh
       - name: Validate HTML and artifact
-        run: ./scripts/validate-site.sh
+        run: bash scripts/validate-site.sh
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
@@ -56,7 +56,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
       - name: Build clean dist artifact
-        run: ./scripts/build-site.sh
+        run: bash scripts/build-site.sh
       - name: Deploy preview to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@v3
@@ -78,7 +78,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
       - name: Build clean dist artifact
-        run: ./scripts/build-site.sh
+        run: bash scripts/build-site.sh
       - name: Deploy production to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
