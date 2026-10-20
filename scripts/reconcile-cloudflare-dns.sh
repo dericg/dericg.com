@@ -22,6 +22,7 @@ upsert_cname() {
   fi
 
   record_id="$(jq -r '.result[] | select(.type == "CNAME") | .id' <<<"${response}" | head -n1)"
+  conflict_ids="$(jq -r '.result[] | select(.type == "A" or .type == "AAAA") | .id' <<<"${response}")"
   payload="$(jq -nc --arg name "${hostname}" --arg content "${CLOUDFLARE_PAGES_PROJECT}.pages.dev" \
     '{type:"CNAME", name:$name, content:$content, ttl:1, proxied:false}')"
 
@@ -30,6 +31,12 @@ upsert_cname() {
       "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${record_id}" \
       --data "${payload}")"
   else
+    while IFS= read -r conflict_id; do
+      [[ -z "${conflict_id}" ]] && continue
+      curl --fail-with-body -sS "${auth[@]}" -X DELETE \
+        "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${conflict_id}" >/dev/null
+    done <<<"${conflict_ids}"
+
     response="$(curl -sS "${auth[@]}" -X POST \
       "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records" \
       --data "${payload}")"
