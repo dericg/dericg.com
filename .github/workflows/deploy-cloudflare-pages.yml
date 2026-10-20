@@ -1,0 +1,88 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "scripts/**"
+      - "infra/**"
+      - ".github/workflows/deploy-cloudflare-pages.yml"
+  push:
+    branches: [master]
+    paths:
+      - "index.html"
+      - "scripts/**"
+      - "infra/**"
+      - ".github/workflows/deploy-cloudflare-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  CLOUDFLARE_PAGES_PROJECT: dericg-com
+
+jobs:
+  validate:
+    name: Validate static site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Build clean dist artifact
+        run: ./scripts/build-site.sh
+      - name: Validate HTML and artifact
+        run: ./scripts/validate-site.sh
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: dist/
+          if-no-files-found: error
+
+  preview:
+    name: Deploy pull request preview
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && secrets.CLOUDFLARE_API_TOKEN != ''
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: preview/pr-${{ github.event.pull_request.number }}
+      url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Build clean dist artifact
+        run: ./scripts/build-site.sh
+      - name: Deploy preview to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: .
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT }} --branch=pr-${{ github.event.pull_request.number }}
+
+  production:
+    name: Deploy production
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://dericg.com
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Build clean dist artifact
+        run: ./scripts/build-site.sh
+      - name: Deploy production to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: .
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT }}
