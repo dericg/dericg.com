@@ -26,13 +26,18 @@ upsert_cname() {
     '{type:"CNAME", name:$name, content:$content, ttl:1, proxied:false}')"
 
   if [[ -n "${record_id}" ]]; then
-    curl --fail-with-body -sS "${auth[@]}" -X PUT \
+    response="$(curl -sS "${auth[@]}" -X PUT \
       "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${record_id}" \
-      --data "${payload}" >/dev/null
+      --data "${payload}")"
   else
-    curl --fail-with-body -sS "${auth[@]}" -X POST \
+    response="$(curl -sS "${auth[@]}" -X POST \
       "${api}/zones/${CLOUDFLARE_ZONE_ID}/dns_records" \
-      --data "${payload}" >/dev/null
+      --data "${payload}")"
+  fi
+
+  if ! jq -e '.success == true' <<<"${response}" >/dev/null; then
+    echo "Cloudflare DNS update failed: ${response}" >&2
+    exit 1
   fi
 
   echo "Reconciled CNAME for ${hostname}"
