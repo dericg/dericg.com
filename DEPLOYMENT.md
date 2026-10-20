@@ -21,7 +21,7 @@ Create the Cloudflare Pages project and custom domains using the checked-in boot
 
     export CLOUDFLARE_API_TOKEN='...'
     export CLOUDFLARE_ACCOUNT_ID='...'
-    ./infra/bootstrap-cloudflare.sh
+    bash infra/bootstrap-cloudflare.sh
 
 The API token should be narrowly scoped to the target Cloudflare account with Pages project write access. Do not commit it.
 
@@ -34,5 +34,5 @@ Cloudflare DNS must point dericg.com and www.dericg.com at the Pages project acc
 
 ## Local verification
 
-    ./scripts/build-site.sh
-    ./scripts/validate-site.sh
+    bash scripts/build-site.sh
+    bash scripts/validate-site.sh
