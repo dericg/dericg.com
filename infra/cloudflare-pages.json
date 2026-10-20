@@ -1,0 +1,10 @@
+{
+  "projectName": "dericg-com",
+  "productionBranch": "master",
+  "customDomains": ["dericg.com", "www.dericg.com"],
+  "deployment": {
+    "provider": "cloudflare-pages",
+    "method": "wrangler-direct-upload",
+    "artifactDirectory": "dist"
+  }
+}
