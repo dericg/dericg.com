@@ -32,6 +32,9 @@ wp-config.php
 # Log files
 *.log
 
+# Generated static deployment artifact
+/dist/
+
 # htaccess
 /.htaccess
 
