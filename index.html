@@ -133,6 +133,54 @@
     .contact h2{max-width:760px}
     .contact p{color:var(--muted);max-width:720px;margin:0}
     .contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    button.btn{font:inherit;color:inherit;cursor:pointer}
+    .text-panel{margin-top:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));overflow:hidden}
+    .text-panel-inner{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:26px}
+    .text-panel-meta{border-right:1px solid var(--line);padding-right:26px}
+    .text-panel-meta .eyebrow{color:var(--accent);font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.12em}
+    .text-panel-meta h3{font-size:26px;margin:9px 0 9px}
+    .text-panel-meta p{font-size:13px;color:var(--muted);margin:0}
+    .recipient{display:flex;align-items:center;gap:11px;margin-top:20px}
+    .recipient-mark{width:38px;height:38px;border-radius:999px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);font-size:12px;font-weight:850}
+    .recipient strong{display:block;font-size:13px}
+    .recipient span{display:block;color:var(--muted);font-size:11px}
+    .mock-note{display:inline-flex;margin-top:20px;border:1px solid rgba(216,170,112,.28);border-radius:999px;padding:5px 8px;color:var(--accent);background:rgba(216,170,112,.06);font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+    .text-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1 / -1}
+    .field label{font-size:11px;font-weight:800;color:#d9dee6}
+    .field label span{font-weight:500;color:var(--muted)}
+    .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);font:inherit;font-size:14px;padding:11px 12px;outline:none}
+    .field textarea{min-height:122px;resize:vertical}
+    .field input:focus,.field textarea:focus{border-color:rgba(139,184,255,.62);box-shadow:0 0 0 3px rgba(139,184,255,.08)}
+    .field input::placeholder,.field textarea::placeholder{color:#6f7b8b}
+    .message-head{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .char-count{color:var(--muted);font-size:10px}
+    .text-form-actions{grid-column:1 / -1;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:2px}
+    .text-form-actions small{color:var(--muted);font-size:10px}
+    .form-error{grid-column:1 / -1;border:1px solid rgba(216,170,112,.28);border-radius:11px;background:rgba(216,170,112,.06);color:#e4c295;padding:9px 11px;font-size:12px}
+    .chat-state{border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}
+    .chat-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-bottom:1px solid var(--line)}
+    .chat-person{display:flex;align-items:center;gap:10px;min-width:0}
+    .chat-person strong{display:block;font-size:13px}
+    .chat-person span{display:block;color:var(--muted);font-size:10px}
+    .chat-status{font-size:9px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--green);border:1px solid rgba(138,211,178,.25);background:rgba(138,211,178,.06);border-radius:999px;padding:5px 8px;white-space:nowrap}
+    .chat-thread{display:flex;flex-direction:column;gap:10px;min-height:230px;max-height:360px;overflow-y:auto;padding:18px 16px;background:rgba(255,255,255,.008)}
+    .chat-row{display:flex}
+    .chat-row.mine{justify-content:flex-end}
+    .chat-row.theirs{justify-content:flex-start}
+    .chat-bubble{max-width:min(82%,560px);padding:10px 12px;border-radius:15px;font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+    .chat-row.mine .chat-bubble{background:var(--text);color:var(--bg);border-bottom-right-radius:5px}
+    .chat-row.theirs .chat-bubble{border:1px solid var(--line);background:var(--surface-2);color:#dce2e9;border-bottom-left-radius:5px}
+    .chat-stamp{text-align:center;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:2px 0}
+    .chat-compose{border-top:1px solid var(--line);padding:12px}
+    .chat-compose-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+    .chat-compose textarea{width:100%;min-height:44px;max-height:120px;resize:vertical;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);color:var(--text);font:inherit;font-size:14px;padding:10px 11px;outline:none}
+    .chat-compose textarea:focus{border-color:rgba(139,184,255,.62);box-shadow:0 0 0 3px rgba(139,184,255,.08)}
+    .chat-compose textarea::placeholder{color:#6f7b8b}
+    .chat-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .chat-foot small{color:var(--muted);font-size:9px}
+    .chat-reset{border:0;background:none;color:var(--blue);font:inherit;font-size:10px;font-weight:750;padding:0;cursor:pointer}
 
     footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:12px}
     .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -145,6 +193,8 @@
       .section-head{grid-template-columns:1fr;gap:10px}
       .principles,.os{grid-template-columns:1fr}
       .contact-actions{justify-content:flex-start}
+      .text-panel-inner{grid-template-columns:1fr}
+      .text-panel-meta{border-right:0;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:20px}
     }
     @media(max-width:560px){
       .wrap{width:min(calc(100% - 28px),var(--max))}
@@ -154,6 +204,12 @@
       details{padding:0 22px 18px}
       .stats{grid-template-columns:1fr 1fr}
       .story-row{grid-template-columns:1fr;gap:5px}
+      .text-panel-inner{padding:20px}
+      .text-form{grid-template-columns:1fr}
+      .field.full,.text-form-actions,.form-error{grid-column:1}
+      .chat-compose-row{grid-template-columns:1fr}
+      .chat-compose-row .btn{justify-content:center}
+      .chat-bubble{max-width:90%}
     }
   </style>
 </head>
@@ -371,15 +427,80 @@
     </section>
 
     <section id="contact">
-      <div class="wrap contact">
-        <div>
-          <div class="kicker">Contact</div>
-          <h2>If this way of thinking fits a problem you’re working on, I’d like to hear about it.</h2>
-          <p>I’m especially interested in engineering work involving systems, AI, infrastructure, complex information, and products where clearer models lead to better decisions.</p>
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="kicker">Contact</div>
+            <h2>If this way of thinking fits a problem you’re working on, I’d like to hear about it.</h2>
+            <p>I’m especially interested in engineering work involving systems, AI, infrastructure, complex information, and products where clearer models lead to better decisions.</p>
+          </div>
+          <div class="contact-actions">
+            <button class="btn primary" id="open-text" type="button" aria-expanded="false" aria-controls="text-panel">Send me a text →</button>
+            <a class="btn" href="#systems">Review the work ↑</a>
+          </div>
         </div>
-        <div class="contact-actions">
-          <a class="btn primary" href="https://www.instagram.com/deric_g/" target="_blank" rel="noopener noreferrer">Message me →</a>
-          <a class="btn" href="#systems">Review the work ↑</a>
+
+        <div class="text-panel" id="text-panel" hidden>
+          <div class="text-panel-inner">
+            <aside class="text-panel-meta">
+              <div class="eyebrow">Direct message</div>
+              <h3>Text Deric</h3>
+              <p>Have an opportunity, a systems problem, or something interesting to discuss? Send a note here.</p>
+              <div class="recipient">
+                <div class="recipient-mark" aria-hidden="true">DG</div>
+                <div><strong>Deric Garza</strong><span>Direct text conversation</span></div>
+              </div>
+              <div class="mock-note">Prototype · no message sent</div>
+            </aside>
+
+            <div>
+              <form class="text-form" id="text-form" novalidate>
+                <div class="field">
+                  <label for="text-name">Your name</label>
+                  <input id="text-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Jane Smith" />
+                </div>
+                <div class="field">
+                  <label for="text-phone">Your mobile number <span>· so I can reply</span></label>
+                  <input id="text-phone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="(512) 555-0123" />
+                </div>
+                <div class="field full">
+                  <div class="message-head">
+                    <label for="text-message">Message</label>
+                    <span class="char-count" id="char-count">0 / 500</span>
+                  </div>
+                  <textarea id="text-message" name="message" maxlength="500" placeholder="Hey Deric — I came across your site and wanted to talk about…"></textarea>
+                </div>
+                <div class="form-error" id="text-error" role="alert" hidden></div>
+                <div class="text-form-actions">
+                  <button class="btn primary" type="submit">Send text →</button>
+                  <button class="btn" id="close-text" type="button">Cancel</button>
+                  <small>Mockup only. This does not transmit or store your message.</small>
+                </div>
+              </form>
+
+              <div class="chat-state" id="chat-state" aria-live="polite" hidden>
+                <div class="chat-head">
+                  <div class="chat-person">
+                    <div class="recipient-mark" aria-hidden="true">DG</div>
+                    <div><strong>Deric Garza</strong><span id="chat-identity">Direct conversation</span></div>
+                  </div>
+                  <div class="chat-status">Conversation open</div>
+                </div>
+                <div class="chat-thread" id="chat-thread" aria-label="Conversation with Deric"></div>
+                <form class="chat-compose" id="chat-form">
+                  <div class="chat-compose-row">
+                    <label class="sr-only" for="chat-message">Write a message</label>
+                    <textarea id="chat-message" maxlength="500" rows="1" placeholder="Write a message…"></textarea>
+                    <button class="btn primary" type="submit">Send →</button>
+                  </div>
+                  <div class="chat-foot">
+                    <small>Prototype only · messages stay in this page and are not transmitted or stored.</small>
+                    <button class="chat-reset" id="reset-chat" type="button">Start over</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -391,5 +512,121 @@
       <span>Built to show the work, not just claim the skills.</span>
     </div>
   </footer>
+  <script>
+    (() => {
+      const openButton = document.getElementById('open-text');
+      const panel = document.getElementById('text-panel');
+      const closeButton = document.getElementById('close-text');
+      const form = document.getElementById('text-form');
+      const name = document.getElementById('text-name');
+      const phone = document.getElementById('text-phone');
+      const message = document.getElementById('text-message');
+      const count = document.getElementById('char-count');
+      const error = document.getElementById('text-error');
+      const chatState = document.getElementById('chat-state');
+      const chatThread = document.getElementById('chat-thread');
+      const chatForm = document.getElementById('chat-form');
+      const chatMessage = document.getElementById('chat-message');
+      const chatIdentity = document.getElementById('chat-identity');
+      const resetChat = document.getElementById('reset-chat');
+
+      if (!openButton || !panel || !form) return;
+
+      const setOpen = (isOpen) => {
+        panel.hidden = !isOpen;
+        openButton.setAttribute('aria-expanded', String(isOpen));
+        openButton.textContent = isOpen ? 'Close message ↑' : 'Send me a text →';
+        if (isOpen) {
+          requestAnimationFrame(() => name.focus());
+        }
+      };
+
+      const resetMock = () => {
+        form.reset();
+        count.textContent = '0 / 500';
+        error.hidden = true;
+        error.textContent = '';
+        chatThread.replaceChildren();
+        chatState.hidden = true;
+        form.hidden = false;
+        chatIdentity.textContent = 'Direct conversation';
+      };
+
+      const addBubble = (text, side) => {
+        const row = document.createElement('div');
+        row.className = `chat-row ${side}`;
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+        row.appendChild(bubble);
+        chatThread.appendChild(row);
+        chatThread.scrollTop = chatThread.scrollHeight;
+      };
+
+      const addStamp = (text) => {
+        const stamp = document.createElement('div');
+        stamp.className = 'chat-stamp';
+        stamp.textContent = text;
+        chatThread.appendChild(stamp);
+      };
+
+      openButton.addEventListener('click', () => setOpen(panel.hidden));
+      closeButton.addEventListener('click', () => setOpen(false));
+
+      message.addEventListener('input', () => {
+        count.textContent = `${message.value.length} / 500`;
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const cleanName = name.value.trim();
+        const cleanPhone = phone.value.trim();
+        const cleanMessage = message.value.trim();
+
+        if (!cleanName || !cleanPhone || !cleanMessage) {
+          error.textContent = 'Add your name, mobile number, and a message before sending.';
+          error.hidden = false;
+          return;
+        }
+
+        if (cleanMessage.length < 5) {
+          error.textContent = 'Add a little more detail to your message.';
+          error.hidden = false;
+          return;
+        }
+
+        error.hidden = true;
+        form.hidden = true;
+        chatState.hidden = false;
+        chatIdentity.textContent = `${cleanName} · ${cleanPhone}`;
+        addBubble(cleanMessage, 'mine');
+        addStamp('Conversation started');
+        chatMessage.focus();
+
+        window.setTimeout(() => {
+          addBubble(`Thanks for reaching out, ${cleanName}. What are you hoping to solve?`, 'theirs');
+        }, 650);
+      });
+
+      chatForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const cleanMessage = chatMessage.value.trim();
+        if (!cleanMessage) return;
+        addBubble(cleanMessage, 'mine');
+        chatMessage.value = '';
+        chatMessage.focus();
+
+        window.setTimeout(() => {
+          addBubble('Got it. In the live version, my reply by text would appear here and the conversation could continue from either side.', 'theirs');
+        }, 650);
+      });
+
+      resetChat.addEventListener('click', () => {
+        resetMock();
+        name.focus();
+      });
+    })();
+  </script>
+
 </body>
 </html>
