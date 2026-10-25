@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A plain-language version of what I’m working on this week: finishing the outbound communication loop in a reconciliation application." />
+  <title>What I’m Working On This Week — Plain Language — Deric Garza</title>
+  <style>
+    :root{--bg:#090c11;--surface:#10151d;--text:#f3f5f7;--muted:#98a4b4;--line:#242e3b;--accent:#d8aa70;--blue:#8bb8ff;--max:760px}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--text);line-height:1.75;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% -5%,rgba(139,184,255,.07),transparent 27%),var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    header{border-bottom:1px solid var(--line)}
+    nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.02em}
+    .back{font-size:14px;color:var(--muted)}
+    main{padding:78px 0 96px}
+    .eyebrow{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:850;margin-bottom:18px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(44px,7vw,72px);letter-spacing:-.045em;line-height:1.02;margin:0 0 20px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:22px}
+    .version-link{display:inline-block;color:var(--blue);font-size:14px;margin-bottom:46px}
+    article p{font-size:18px;color:#d9dee6;margin:0 0 26px}
+    code{font-size:.9em;background:var(--surface);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#dce5ef}
+    .closing{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+    footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:12px}
+    @media(max-width:560px){.wrap{width:min(calc(100% - 28px),var(--max));margin:auto}main{padding-top:58px}article p{font-size:17px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><nav><a class="brand" href="/">Deric Garza</a><a class="back" href="/writing/">Writing</a></nav></div></header>
+  <main>
+    <div class="wrap">
+      <div class="eyebrow">Working note · Plain-language version</div>
+      <h1>What I’m Working On This Week</h1>
+      <div class="meta">October 25, 2026</div>
+      <a class="version-link" href="/writing/what-im-working-on-this-week/">Read the original version →</a>
+      <article>
+        <p>This week I’m working on an app that helps keep track of problems between business records.</p>
+
+        <p>A company may use several systems to manage things like bills, payments, credits, and orders. Sometimes the information in those systems does not match. A payment may be hard to identify. A credit may be missing. A bill may still need approval. An issue from last week may still be open.</p>
+
+        <p>The app keeps track of those problems until someone figures out what happened and resolves them.</p>
+
+        <p>One part of the process is sending a report to the client.</p>
+
+        <p>Before that report goes out, someone needs to review it. They may ask for changes before approving it. I’ve been moving that process into the app so there is a clear record of what happened.</p>
+
+        <p>For example, if someone reviews Version 1 and asks for changes, Version 1 stays saved. The app creates Version 2. If Version 3 is later approved, the app keeps a record of exactly what was in Version 3 when it was approved.</p>
+
+        <p>This week I’m working on what happens after that approval.</p>
+
+        <p>The app can already send the approved message through an email service. Now I want the app to know what happened after it sent the message.</p>
+
+        <p>There is a difference between giving an email to the email service and knowing that the receiving email server accepted it. The app should only say <code>DELIVERED</code> when it has proof that happened. Until then, it should say <code>SUBMITTED</code>.</p>
+
+        <p>I’m also making sure the same approved message cannot be sent twice by mistake. Someone might click the send button twice, refresh the page, or try again because the first request seemed slow. The app should recognize that the message was already sent and stop a second copy from going out.</p>
+
+        <p>My goal for this week is to finish that full path: prepare the message, review it, approve it, send it, confirm delivery, and keep a record of each step.</p>
+
+        <p>Once that is working well, I can move on to the next parts of the app. Those include improving the report itself and bringing client replies back into the same system.</p>
+
+        <p class="closing">For now, I want to get this one path working from start to finish.</p>
+      </article>
+    </div>
+  </main>
+  <footer><div class="wrap">Deric Garza · A work in progress.</div></footer>
+</body>
+</html>
