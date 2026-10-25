@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "index.html"
+      - "writing/**"
       - "scripts/**"
       - "infra/**"
       - ".github/workflows/deploy-cloudflare-pages.yml"
@@ -11,6 +12,7 @@ on:
     branches: [master]
     paths:
       - "index.html"
+      - "writing/**"
       - "scripts/**"
       - "infra/**"
       - ".github/workflows/deploy-cloudflare-pages.yml"
