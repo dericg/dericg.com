@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="What I’m working on this week: finishing the outbound communication loop in a reconciliation application." />
+  <title>What I’m Working On This Week — Deric Garza</title>
+  <style>
+    :root{--bg:#090c11;--surface:#10151d;--text:#f3f5f7;--muted:#98a4b4;--line:#242e3b;--accent:#d8aa70;--blue:#8bb8ff;--max:760px}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--text);line-height:1.75;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% -5%,rgba(139,184,255,.07),transparent 27%),var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    header{border-bottom:1px solid var(--line)}
+    nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.02em}
+    .back{font-size:14px;color:var(--muted)}
+    main{padding:78px 0 96px}
+    .eyebrow{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:850;margin-bottom:18px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(44px,7vw,72px);letter-spacing:-.045em;line-height:1.02;margin:0 0 20px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:52px}
+    article p{font-size:18px;color:#d9dee6;margin:0 0 26px}
+    code{font-size:.9em;background:var(--surface);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#dce5ef}
+    .closing{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+    footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:12px}
+    @media(max-width:560px){.wrap{width:min(calc(100% - 28px),var(--max));margin:auto}main{padding-top:58px}article p{font-size:17px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><nav><a class="brand" href="/">Deric Garza</a><a class="back" href="/writing/">Writing</a></nav></div></header>
+  <main>
+    <div class="wrap">
+      <div class="eyebrow">Working note</div>
+      <h1>What I’m Working On This Week</h1>
+      <div class="meta">October 25, 2026</div>
+      <article>
+        <p>This week I’m working on a reconciliation app that helps manage the messy parts of a recurring business review process.</p>
+
+        <p>The basic problem is pretty common: information lives in several places, some of it doesn’t line up, and somebody has to figure out what still needs attention. That can mean a missing credit, an unmatched payment, something waiting for approval, or an issue that was still open from the previous week.</p>
+
+        <p>The app is meant to keep those exceptions organized from the moment they’re identified until they’re resolved.</p>
+
+        <p>One part of that workflow is communication. Once the open items have been reviewed, someone prepares the client-facing report and message. That communication then needs to be reviewed internally, changed if necessary, approved, and eventually sent.</p>
+
+        <p>A lot of that process used to happen through email. Someone would prepare the draft, send it over for review, make changes, and then send the final version.</p>
+
+        <p>I’ve been moving that into the application so the review process has a proper history. If someone reviews Version 1 and asks for changes, Version 1 stays exactly as it was. A new version gets created. If Version 3 is eventually approved, the system preserves exactly what was in Version 3 when that approval happened.</p>
+
+        <p>This week I’m focused on finishing the outbound side of that workflow.</p>
+
+        <p>The app can already send review notifications and send an approved communication through an email provider. What I’m working on now is making sure the delivery record is accurate all the way through.</p>
+
+        <p>For example, there’s a difference between handing an email to the provider and knowing the receiving mail server actually accepted it. I want the app to reflect that difference correctly, so a communication moves from <code>SUBMITTED</code> to <code>DELIVERED</code> only when there’s real evidence that delivery happened.</p>
+
+        <p>I’m also making sure the same approved version can’t accidentally be sent twice. That matters for obvious reasons, especially if someone double-clicks a button, refreshes the page, or retries after a slow response.</p>
+
+        <p>The larger goal is to make the outbound workflow something I can trust from end to end: prepare the communication, review the exact version, approve it, send it, confirm delivery, and preserve the record of what happened.</p>
+
+        <p>If I get that finished this week, I’ll be ready to move on to the next parts of the app, including improving the actual report artifact and bringing client responses back into the same workflow.</p>
+
+        <p class="closing">For now, I’m trying to get one path working cleanly from start to finish.</p>
+      </article>
+    </div>
+  </main>
+  <footer><div class="wrap">Deric Garza · A work in progress.</div></footer>
+</body>
+</html>

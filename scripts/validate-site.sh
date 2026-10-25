@@ -6,6 +6,10 @@ test -s index.html
 test -f dist/index.html
 test -s dist/index.html
 cmp -s index.html dist/index.html
+test -s dist/writing/index.html
+test -s dist/writing/what-im-working-on-this-week/index.html
+cmp -s writing/index.html dist/writing/index.html
+cmp -s writing/what-im-working-on-this-week/index.html dist/writing/what-im-working-on-this-week/index.html
 
 grep -Fq '<!doctype html>' dist/index.html
 grep -Fq '<meta name="viewport"' dist/index.html
